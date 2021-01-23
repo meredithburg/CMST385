@@ -24,21 +24,20 @@ jobs:
 
     runs-on: windows-latest
 
-     steps:
+steps:
 - uses: actions/checkout@master
+- name: Deploy to Azure Web App
+  
+uses: azure/webapps-deploy@v1
 
-    - name: Deploy to Azure Web App
-
-      uses: azure/webapps-deploy@v1
-
-      with:
+with:
 
       #Change the app-name to match what was provided to you in the publish settings file, this is in a naming convention of 'COURSENAME-STUDENTUID'
 
-        app-name: 'cmst385-mcoviello'
+app-name: 'cmst385-mcoviello'
 
-        slot-name: 'production'
+slot-name: 'production'
 
       #Change the publish profile to match what you named your secret setup in GitHub, Example shown below
 
-        publish-profile: ${{ secrets.AppServiceCMST385 }}
+publish-profile: ${{ secrets.AppServiceCMST385 }}
